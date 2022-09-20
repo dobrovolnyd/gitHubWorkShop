@@ -59,12 +59,12 @@ jobs:
           docker run --shm-size=1g --rm sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ -b chrome
           
   playwright:
-    needs: [sitespeedio]
+    needs: [gitleaks]
     name: PlayWright Check Klingon
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkou@v2
+        uses: actions/checkout@v2
       - name: Run PlayWright
         run: |
           cd ${{ github.workspace }}/test/playwright
