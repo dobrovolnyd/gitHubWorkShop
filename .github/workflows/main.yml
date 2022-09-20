@@ -56,4 +56,6 @@ jobs:
         uses: actions/checkout@v2
       - name: SpeedSiteIo Run
         run: |
-          docker run --shm-size=1g --rm -v sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ -b chrome
+          docker run --shm-size=1g --rm sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ -b chrome
+
+
