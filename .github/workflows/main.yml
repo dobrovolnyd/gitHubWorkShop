@@ -46,3 +46,14 @@ jobs:
         with:
           filename: ${{ github.workspace }}/test/k6/loadtest.js
           flags: --vus 50 --duration 10s
+
+  sitespeedio:
+    needs: [k6loadtest, gitleaks, postman, apiRobotTest]
+    name: Site speed io
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: SpeedSiteIo Run
+        run: |
+          docker run --shm-size=1g --rm -v sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ -b chrome
