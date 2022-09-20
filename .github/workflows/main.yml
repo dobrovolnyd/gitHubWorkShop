@@ -3,14 +3,17 @@ on:
   [push, workflow_dispatch]
   
 jobs:
-  bestHero:
+  apiRobotTest:
+    name: Robot - Api
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "CJ"
-
-  grandTheftAuto:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: echo "Michael, Franklin, Trevor"
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install robotframework-requests
+      - name: StartTest
+        run: |
+          python -m robot -i api test/RobotFrameWork/tc.robot
